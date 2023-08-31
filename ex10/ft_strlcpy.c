@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fltorren <fltorren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 21:38:33 by fltorren          #+#    #+#             */
-/*   Updated: 2023/08/31 16:44:54 by fltorren         ###   ########.fr       */
+/*   Created: 2023/08/31 15:19:42 by fltorren          #+#    #+#             */
+/*   Updated: 2023/08/31 16:41:05 by fltorren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_printable(char *str)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	i;
-	int	c;
+	unsigned int	i;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = -1;
+	while (++i < size - 1 && src[i] != '\0')
 	{
-		c = str[i];
-		if (c < ' ' || c > '~')
-			return (0);
-		i++;
+		dest[i] = src[i];
 	}
-	return (1);
+	dest[size - 1] = '\0';
+	return (i);
 }
-
-/*
-** https://bitly.ws/Twxe
-*/
