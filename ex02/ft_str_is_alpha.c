@@ -6,11 +6,9 @@
 /*   By: fltorren <fltorren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 21:18:02 by fltorren          #+#    #+#             */
-/*   Updated: 2023/08/30 21:36:39 by fltorren         ###   ########.fr       */
+/*   Updated: 2023/08/31 20:45:38 by fltorren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	ft_str_is_alpha(char *str)
 {
