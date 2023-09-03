@@ -6,7 +6,7 @@
 /*   By: fltorren <fltorren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:47:50 by fltorren          #+#    #+#             */
-/*   Updated: 2023/08/31 18:16:40 by fltorren         ###   ########.fr       */
+/*   Updated: 2023/09/03 17:45:43 by fltorren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_print_printables(char *addr, int size)
 	int	i;
 
 	i = 0;
-	while (i < size)
+	while (i < size && i < 16)
 	{
 		if (addr[i] < ' ' || addr[i] > '~')
 			ft_putchar('.');
@@ -80,7 +80,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		write(1, ": ", 2);
 		ft_print_bytes_line((char *)addr, size - (i * 16));
 		ft_putchar(' ');
-		ft_print_printables((char *)addr, 16);
+		ft_print_printables((char *)addr, size - (i * 16));
 		ft_putchar('\n');
 		addr += 16;
 		i++;
@@ -88,9 +88,12 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	return (addr);
 }
 
-// int	main(void)
-// {
-// 	char *str = "Bonjour les aminches\n\0";
-// 	ft_print_memory((char *)str, 20);
-// 	return (0);
-// }
+/*
+int	main(void)
+{
+	char *str = "Bonjour les aminches	\n	c\a est fou	tout"
+	"	ce qu on peut faire avec	\n	print_memory\n\n\n	lol.lol\n ";
+	ft_print_memory((char *)str, 92);
+	return (0);
+}
+*/

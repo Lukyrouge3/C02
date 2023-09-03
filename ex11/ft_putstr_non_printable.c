@@ -6,7 +6,7 @@
 /*   By: fltorren <fltorren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 15:41:47 by fltorren          #+#    #+#             */
-/*   Updated: 2023/08/31 19:43:48 by fltorren         ###   ########.fr       */
+/*   Updated: 2023/09/03 14:59:32 by fltorren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,15 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_int_to_put_hex(int n)
+void	ft_print_hex(char c, int size)
 {
-	int	temp;
-
-	if (n < 16)
-		temp = 0;
+	if (c > 16 || size > 1)
+		ft_print_hex(c / 16, --size);
+	c %= 16;
+	if (c <= 9)
+		ft_putchar('0' + c);
 	else
-		temp = n / 16;
-	if (temp < 10)
-		ft_putchar('0' + temp);
-	else
-		ft_putchar('a' + temp - 10);
-	n %= 16;
-	if (n < 10)
-		ft_putchar('0' + n);
-	else
-		ft_putchar('a' + n - 10);
-}
-
-int	ft_str_is_printable(char *str)
-{
-	int	i;
-	int	c;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		c = str[i];
-		if (c < '!' || c > '~')
-			return (0);
-		i++;
-	}
-	return (1);
+		ft_putchar('a' + c - 10);
 }
 
 void	ft_putstr_non_printable(char *str)
@@ -62,10 +38,17 @@ void	ft_putstr_non_printable(char *str)
 		if (str[i] < ' ' || str[i] > '~')
 		{
 			ft_putchar('\\');
-			ft_int_to_put_hex(str[i]);
+			ft_print_hex(str[i], 2);
 		}
 		else
 			ft_putchar(str[i]);
 		i++;
 	}
 }
+
+// int main()
+// {
+// 	char str[] = "Coucou\n\ttu vas bien ?";
+// 	ft_putstr_non_printable(str);
+// 	return (0);
+// }
